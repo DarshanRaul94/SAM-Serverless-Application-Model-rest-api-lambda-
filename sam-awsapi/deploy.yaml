@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'sam-awsapi
+
+  Sample SAM Template for sam-awsapi
+
+  '
+Globals:
+  Function:
+    Timeout: 60
+Outputs:
+  MyLambdaLayerARN:
+    Description: MyLambdaLayer ARN
+    Export:
+      Name: my-lambda-layer-arn
+    Value:
+      Ref: MyLambdaLayer
+Resources:
+  GetBucketsFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-2/15a2e614babe96b7be23a9b6d444a1e7
+      Description: Get the buckets in your account
+      FunctionName: getbucketssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  MyLambdaLayer:
+    Properties:
+      CompatibleRuntimes:
+      - python3.6
+      - python3.7
+      ContentUri: s3://sam-templates-awsapi-2/496627a3d9a1c39de1796a699affcb6f
+      Description: My Lambda Layer with FireAuth Function
+      LayerName: MyLambdaLayer
+      LicenseInfo: MIT
+      RetentionPolicy: Retain
+    Type: AWS::Serverless::LayerVersion
+Transform: AWS::Serverless-2016-10-31
