@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sam-app
+
+  Sample SAM Template for sam-app
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 60
+
+Resources:
+  GetS3BucketsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getbucketssam
+      Description: Get the buckets in your account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: get_buckets/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Events:
+        GetS3bucketsAPI:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /s3buckets
+            Method: get
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  GetS3bucketsAPI:
+    Description: "API Gateway endpoint URL for Prod stage for Bucket function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/s3buckets/"
+  GetS3BucketsFunction:
+    Description: "S3 bucket Lambda Function ARN"
+    Value: !GetAtt GetS3BucketsFunction.Arn
+  
