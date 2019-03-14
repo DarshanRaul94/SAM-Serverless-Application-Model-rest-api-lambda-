@@ -17,7 +17,7 @@ Resources:
       FunctionName: getbucketssam
       Description: Get the buckets in your account
       Role: arn:aws:iam::310094733482:role/lambda_basic_execution
-      CodeUri: getbuckets/
+      CodeUri: S3/getbuckets/
       Handler: main.lambda_handler
       Runtime: python3.6
       Layers:
@@ -30,6 +30,18 @@ Resources:
       Description: Get the instances in your account
       Role: arn:aws:iam::310094733482:role/lambda_basic_execution
       CodeUri: getservers/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
+  CreateBucketFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: createbucketsam
+      Description: Create bucket
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/createbucket/
       Handler: main.lambda_handler
       Runtime: python3.6
       Layers:
