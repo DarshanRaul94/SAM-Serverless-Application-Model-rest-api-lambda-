@@ -1,0 +1,100 @@
+---
+swagger: '2.0'
+basePath: "/"
+paths:
+  "/s3/buckets":
+    get:
+      responses:
+        '200':
+          description: Success
+      summary: Get all the buckets
+      operationId: get_buckets
+      parameters:
+      - description: profile_name
+        name: profile
+        type: string
+        in: query
+      tags:
+      - S3
+  "/s3/buckets/{bucket_name}":
+    parameters:
+    - name: bucket_name
+      in: path
+      required: true
+      type: string
+    delete:
+      responses:
+        '200':
+          description: Success
+      summary: Delete a bucket
+      operationId: delete_buckets_ops
+      parameters:
+      - description: profile_name
+        name: profile
+        type: string
+        in: query
+      tags:
+      - S3
+    post:
+      responses:
+        '200':
+          description: Success
+      summary: Create a bucket
+      operationId: post_buckets_ops
+      parameters:
+      - description: profile_name
+        name: profile
+        type: string
+        in: query
+      tags:
+      - S3
+  "/s3/objects":
+    get:
+      responses:
+        '200':
+          description: Success
+      summary: Get all the objects in all buckets
+      operationId: get_objects
+      parameters:
+      - description: profile_name
+        name: profile
+        type: string
+        in: query
+      tags:
+      - S3
+  "/s3/objects/{bucket_name}":
+    parameters:
+    - name: bucket_name
+      in: path
+      required: true
+      type: string
+    get:
+      responses:
+        '200':
+          description: Success
+      summary: Get all the objects in given bucket
+      operationId: get_objects_ops
+      parameters:
+      - description: profile_name
+        name: profile
+        type: string
+        in: query
+      tags:
+      - S3
+info:
+  title: AWS API
+  version: '1.0'
+  description: Use this API to interact with your AWS services
+produces:
+- application/json
+consumes:
+- application/json
+tags:
+- name: S3
+  description: Api's to interact with AWS S3
+
+responses:
+  ParseError:
+    description: When a mask can't be parsed
+  MaskError:
+    description: When any error occurs on mask
