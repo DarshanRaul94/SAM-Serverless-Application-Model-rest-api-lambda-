@@ -63,6 +63,30 @@ Resources:
       Layers:
         - !Ref MyLambdaLayer
 
+  GetallObjectsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getallobjectssam
+      Description: Get all buckets in all buckets
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/getallobjects/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
+  GetObjectsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getobjectssam
+      Description: get buckets of a specific bucket
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/getobject/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
         
   MyLambdaLayer:
         Type: AWS::Serverless::LayerVersion
