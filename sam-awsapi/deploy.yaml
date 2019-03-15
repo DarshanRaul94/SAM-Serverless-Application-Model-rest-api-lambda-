@@ -37,6 +37,17 @@ Resources:
       Role: arn:aws:iam::310094733482:role/lambda_basic_execution
       Runtime: python3.6
     Type: AWS::Serverless::Function
+  CreateServerFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-2/9b5312ce71870cd7aabce28970b38b3d
+      Description: Create servers with specified configuration
+      FunctionName: createserverssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
   CreateUserFunction:
     Properties:
       CodeUri: s3://sam-templates-awsapi-2/38a580b5c25bd1f6ea73024dc8affacb
@@ -114,6 +125,17 @@ Resources:
       Role: arn:aws:iam::310094733482:role/lambda_basic_execution
       Runtime: python3.6
     Type: AWS::Serverless::Function
+  GetKeypairsFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-2/06b08db1a7b2b94c82fb36cc81bdbf10
+      Description: Get Keypairs in your account
+      FunctionName: getkeypairssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
   GetObjectsFunction:
     Properties:
       CodeUri: s3://sam-templates-awsapi-2/7a3b08b6254bfe0e674a8ce87aa245f4
@@ -138,7 +160,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetServersFunction:
     Properties:
-      CodeUri: s3://sam-templates-awsapi-2/1b5fcf604345991ffe9477397a14e4e4
+      CodeUri: s3://sam-templates-awsapi-2/242d7ac236b3bd81feffab84058fab83
       Description: Get the instances in your account
       FunctionName: getserverssam
       Handler: main.lambda_handler
@@ -180,4 +202,26 @@ Resources:
       LicenseInfo: MIT
       RetentionPolicy: Retain
     Type: AWS::Serverless::LayerVersion
+  StartStopServerFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-2/570d0e72cba3466d75ea71a60d47940a
+      Description: Start or Stop servers by providing isntance_ids
+      FunctionName: startstopserversam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  TerminateServerFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-2/0a0d1ecc651fdf2d81e393ea6b975a08
+      Description: Terminate server by providing instance_id
+      FunctionName: terminateserverssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
 Transform: AWS::Serverless-2016-10-31

@@ -11,6 +11,71 @@ Globals:
     Timeout: 60
 
 Resources:
+
+
+
+  GetServersFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getserverssam
+      Description: Get the instances in your account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Instances/getservers/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
+  CreateServerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: createserverssam
+      Description: Create servers with specified configuration
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Instances/createserver/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  
+  StartStopServerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: startstopserversam
+      Description: Start or Stop servers by providing isntance_ids
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Instances/startstopserver/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  
+  TerminateServerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: terminateserverssam
+      Description: Terminate server by providing instance_id
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Instances/terminateserver/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
+  GetKeypairsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getkeypairssam
+      Description: Get Keypairs in your account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Keypairs/getkeypairs/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  
+  ############################EC2 SECTION END######################
+
   GetBucketsFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -23,17 +88,6 @@ Resources:
       Layers:
         - !Ref MyLambdaLayer
   
-  GetServersFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      FunctionName: getserverssam
-      Description: Get the instances in your account
-      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
-      CodeUri: getservers/
-      Handler: main.lambda_handler
-      Runtime: python3.6
-      Layers:
-        - !Ref MyLambdaLayer
   
         
  
