@@ -108,6 +108,50 @@ Resources:
       Runtime: python3.6
       Layers:
       - Ref: MyLambdaLayer
+  GetGroupsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: getallGroupsssam
+      Description: get all Groups in your AWS account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: s3://sam-templates-awsapi-2/e441dc5feebfd86936dda1705d65f27c
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+      - Ref: MyLambdaLayer
+  CreateGroupFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: creategroupsam
+      Description: Create group
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: s3://sam-templates-awsapi-2/ad7ed75a5725012d3227dd82092d3d2f
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+      - Ref: MyLambdaLayer
+  DeleteGroupFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: deletegroupsam
+      Description: Delete User
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: s3://sam-templates-awsapi-2/2a1096b6ffc619799d8798ce47e79ac6
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+      - Ref: MyLambdaLayer
+  GetGroupDetailsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: groupdetailssam
+      Description: Get details of users in a group
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: s3://sam-templates-awsapi-2/a36791171fd5d27469e6b9326b9335b6
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+      - Ref: MyLambdaLayer
   MyLambdaLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:

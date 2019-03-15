@@ -121,6 +121,52 @@ Resources:
       Runtime: python3.6
       Layers:
         - !Ref MyLambdaLayer     
+
+  GetGroupsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getallGroupsssam
+      Description: get all Groups in your AWS account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Groups/getgroups
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  CreateGroupFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: creategroupsam
+      Description: Create group
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Groups/creategroup
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  DeleteGroupFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: deletegroupsam
+      Description: Delete User
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Groups/deletegroup
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer     
+
+  GetGroupDetailsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: groupdetailssam
+      Description: Get details of users in a group
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Groups/getgroupdetails
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer     
  ###########################IAM SECTION END####################################
 
 
