@@ -75,6 +75,39 @@ Resources:
       Runtime: python3.6
       Layers:
       - Ref: MyLambdaLayer
+  GetUsersFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: getallusersssam
+      Description: get all users in your AWS account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: s3://sam-templates-awsapi-2/2a2e090b58504bd7097d099058d68601
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+      - Ref: MyLambdaLayer
+  CreateUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: createusersam
+      Description: Create user
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: s3://sam-templates-awsapi-2/163ef0c91068ca9d6cc6802ee0bf98e0
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+      - Ref: MyLambdaLayer
+  DeleteUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: deleteusersam
+      Description: Delete User
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: s3://sam-templates-awsapi-2/2f29a4c93eb28bce683d1d07f1e7e6ea
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+      - Ref: MyLambdaLayer
   MyLambdaLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:

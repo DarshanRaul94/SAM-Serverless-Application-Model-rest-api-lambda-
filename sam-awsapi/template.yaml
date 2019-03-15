@@ -87,7 +87,45 @@ Resources:
       Layers:
         - !Ref MyLambdaLayer
 
-        
+ ###########################S3 SECTION END#####################################
+  GetUsersFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getallusersssam
+      Description: get all users in your AWS account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Users/getusers/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  CreateUserFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: createusersam
+      Description: Create user
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Users/createuser/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  DeleteUserFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: deleteusersam
+      Description: Delete User
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Users/deleteuser/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer     
+ ###########################IAM SECTION END####################################
+
+
+
+
   MyLambdaLayer:
         Type: AWS::Serverless::LayerVersion
         Properties:
