@@ -1,0 +1,261 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sam-awsapi
+
+  Sample SAM Template for sam-awsapi
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 60
+
+Resources:
+
+
+
+  GetServersFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getserverssam
+      Description: Get the instances in your account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Instances/getservers/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
+  CreateServerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: createserverssam
+      Description: Create servers with specified configuration
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Instances/createserver/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  
+  StartStopServerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: startstopserversam
+      Description: Start or Stop servers by providing isntance_ids
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Instances/startstopserver/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  
+  TerminateServerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: terminateserverssam
+      Description: Terminate server by providing instance_id
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Instances/terminateserver/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
+  GetKeypairsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getkeypairssam
+      Description: Get Keypairs in your account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: EC2/Keypairs/getkeypairs/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  
+  ############################EC2 SECTION END######################
+
+  GetBucketsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getbucketssam
+      Description: Get the buckets in your account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/getbuckets/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  
+  
+ 
+
+
+  CreateBucketFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: createbucketsam
+      Description: Create bucket
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/createbucket/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  
+  
+  DeleteBucketFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: deletebucketsam
+      Description: Delete bucket
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/deletebucket/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
+  GetallObjectsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getallobjectssam
+      Description: Get all buckets in all buckets
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/getallobjects/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
+  GetObjectsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getobjectssam
+      Description: get buckets of a specific bucket
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/getobject/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+
+ ###########################S3 SECTION END#####################################
+  GetUsersFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getallusersssam
+      Description: get all users in your AWS account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Users/getusers/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  CreateUserFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: createusersam
+      Description: Create user
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Users/createuser/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  DeleteUserFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: deleteusersam
+      Description: Delete User
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Users/deleteuser/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer     
+
+  GetGroupsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getallGroupsssam
+      Description: get all Groups in your AWS account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Groups/getgroups
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  CreateGroupFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: creategroupsam
+      Description: Create group
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Groups/creategroup
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+  DeleteGroupFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: deletegroupsam
+      Description: Delete User
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Groups/deletegroup
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer     
+
+  GetGroupDetailsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: groupdetailssam
+      Description: Get details of users in a group
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Groups/getgroupdetails
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer     
+        
+
+  GetRolesFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getrolessam
+      Description: Get roles in your account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: IAM/Roles/getroles/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer   
+ ###########################IAM SECTION END####################################
+
+
+
+
+  MyLambdaLayer:
+        Type: AWS::Serverless::LayerVersion
+        Properties:
+            LayerName: MyLambdaLayer
+            Description: My Lambda Layer with FireAuth Function
+            ContentUri: lambda-layers/lambda-layers.zip
+            CompatibleRuntimes:
+                - python3.6
+                - python3.7
+            LicenseInfo: MIT
+            RetentionPolicy: Retain
+
+Outputs:
+ 
+
+  MyLambdaLayerARN:
+        Value: !Ref MyLambdaLayer
+        Description: MyLambdaLayer ARN
+        Export:
+            Name: my-lambda-layer-arn

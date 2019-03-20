@@ -26,6 +26,17 @@ Resources:
       Role: arn:aws:iam::310094733482:role/lambda_basic_execution
       Runtime: python3.6
     Type: AWS::Serverless::Function
+  CreateBucketFunctionJ:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-2/190ead6caffd53c16175737f0deb0cdd
+      Description: Create bucket
+      FunctionName: createbucketsamJ
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
   CreateGroupFunction:
     Properties:
       CodeUri: s3://sam-templates-awsapi-2/49e3691f81be32e7f862ca0826c2316e
@@ -97,6 +108,17 @@ Resources:
       CodeUri: s3://sam-templates-awsapi-2/15a2e614babe96b7be23a9b6d444a1e7
       Description: Get the buckets in your account
       FunctionName: getbucketssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetBucketsJFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-2/b2afe0613d7460de7dbf8619179514a1
+      Description: Get the buckets in your account JSON
+      FunctionName: getbucketssamJ
       Handler: main.lambda_handler
       Layers:
       - Ref: MyLambdaLayer

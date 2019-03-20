@@ -88,7 +88,17 @@ Resources:
       Layers:
         - !Ref MyLambdaLayer
   
-  
+  GetBucketsJFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: getbucketssamJ
+      Description: Get the buckets in your account JSON
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/getbucketsj/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
         
  
 
@@ -105,6 +115,18 @@ Resources:
       Layers:
         - !Ref MyLambdaLayer
   
+  CreateBucketFunctionJ:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: createbucketsamJ
+      Description: Create bucket
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: S3/createbucketj/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer      
+
   DeleteBucketFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:

@@ -1,0 +1,227 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'sam-awsapi
+
+  Sample SAM Template for sam-awsapi
+
+  '
+Globals:
+  Function:
+    Timeout: 60
+Outputs:
+  MyLambdaLayerARN:
+    Description: MyLambdaLayer ARN
+    Export:
+      Name: my-lambda-layer-arn
+    Value:
+      Ref: MyLambdaLayer
+Resources:
+  CreateBucketFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/1892541078473932ccb38de3d2c5af13
+      Description: Create bucket
+      FunctionName: createbucketsam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  CreateGroupFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/629a3d9b8feb9bc66628b94723982e48
+      Description: Create group
+      FunctionName: creategroupsam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  CreateServerFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/1f27bd0ad5cf6efd56d312a46704b2cc
+      Description: Create servers with specified configuration
+      FunctionName: createserverssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  CreateUserFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/647b80ab0521358937c4f24969d5cc03
+      Description: Create user
+      FunctionName: createusersam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  DeleteBucketFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/9bdd23027c230aa0c16d16691f1f6e29
+      Description: Delete bucket
+      FunctionName: deletebucketsam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  DeleteGroupFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/478420adfed0365b80f73fc7bbc78397
+      Description: Delete User
+      FunctionName: deletegroupsam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  DeleteUserFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/b5bf9ed2cee3a6f1b9c930c9a7d90102
+      Description: Delete User
+      FunctionName: deleteusersam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetBucketsFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/7f0f365ced92bb7c63e08aa3d987a99a
+      Description: Get the buckets in your account
+      FunctionName: getbucketssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetGroupDetailsFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/d48dbd251b24bf0320f8c9ea7bdb2eb8
+      Description: Get details of users in a group
+      FunctionName: groupdetailssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetGroupsFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/bda3699ad99e0e9a89e2d5636a00f5bd
+      Description: get all Groups in your AWS account
+      FunctionName: getallGroupsssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetKeypairsFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/1ab1172fd31d607500b794c2be5b97ba
+      Description: Get Keypairs in your account
+      FunctionName: getkeypairssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetObjectsFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/4c7c85742a8bd598de69d2264abac92e
+      Description: get buckets of a specific bucket
+      FunctionName: getobjectssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetRolesFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/376ba4ea0f6159bd2ea66b933162db6d
+      Description: Get roles in your account
+      FunctionName: getrolessam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetServersFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/48c669baacf34f3288c88e5d7365400c
+      Description: Get the instances in your account
+      FunctionName: getserverssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetUsersFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/90e674424d8f50854bd81646a58c3cf0
+      Description: get all users in your AWS account
+      FunctionName: getallusersssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  GetallObjectsFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/b736c9bcad6f4eb0a8ad24e0e7201d6d
+      Description: Get all buckets in all buckets
+      FunctionName: getallobjectssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  MyLambdaLayer:
+    Properties:
+      CompatibleRuntimes:
+      - python3.6
+      - python3.7
+      ContentUri: s3://sam-templates-awsapi-3/496627a3d9a1c39de1796a699affcb6f
+      Description: My Lambda Layer with FireAuth Function
+      LayerName: MyLambdaLayer
+      LicenseInfo: MIT
+      RetentionPolicy: Retain
+    Type: AWS::Serverless::LayerVersion
+  StartStopServerFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/3501707ba8cb32ea15192c1d311f7e1b
+      Description: Start or Stop servers by providing isntance_ids
+      FunctionName: startstopserversam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+  TerminateServerFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/576ff4731aeb9f56ce7f8bfd6723693f
+      Description: Terminate server by providing instance_id
+      FunctionName: terminateserverssam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
