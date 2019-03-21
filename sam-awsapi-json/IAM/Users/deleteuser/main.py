@@ -6,8 +6,10 @@ import json
 
 def lambda_handler(event, context):
     profile_name=event['headers']['profile']
-    body=json.loads(str(event['body']))
-    user_name=body['user_name']
+    
+    
+    user_name=str(event['pathParameters']['user_name'])
+    
     #profile_name = str(event["profile"])
     #profile_name = str(event['params']['querystring']['profile'])
     ref = fa.getReference(profile_name)

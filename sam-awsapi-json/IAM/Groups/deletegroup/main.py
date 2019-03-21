@@ -6,8 +6,7 @@ import json
 
 def lambda_handler(event, context):
     profile_name=event['headers']['profile']
-    body=json.loads(str(event['body']))
-    group_name=body['group_name']
+    group_name=str(event['pathParameters']['group_name'])
     ref = fa.getReference(profile_name)
 
     iam=boto3.client('iam', region_name=str(ref.get()['region']), aws_access_key_id=str(ref.get()['access_key']), aws_secret_access_key=str(ref.get()['secret_access_key']))

@@ -61,7 +61,7 @@ Resources:
     Type: AWS::Serverless::Function
   DeleteBucketFunction:
     Properties:
-      CodeUri: s3://sam-templates-awsapi-3/9bdd23027c230aa0c16d16691f1f6e29
+      CodeUri: s3://sam-templates-awsapi-3/cbbf7f5346a1b5f666265465056ac0f9
       Description: Delete bucket
       FunctionName: deletebucketsam
       Handler: main.lambda_handler
@@ -72,7 +72,7 @@ Resources:
     Type: AWS::Serverless::Function
   DeleteGroupFunction:
     Properties:
-      CodeUri: s3://sam-templates-awsapi-3/478420adfed0365b80f73fc7bbc78397
+      CodeUri: s3://sam-templates-awsapi-3/78e79d96c30fb1b9c9ac2df57917313d
       Description: Delete User
       FunctionName: deletegroupsam
       Handler: main.lambda_handler
@@ -83,7 +83,7 @@ Resources:
     Type: AWS::Serverless::Function
   DeleteUserFunction:
     Properties:
-      CodeUri: s3://sam-templates-awsapi-3/b5bf9ed2cee3a6f1b9c930c9a7d90102
+      CodeUri: s3://sam-templates-awsapi-3/b0c21b02c32c9627f9e6c65f05b4c319
       Description: Delete User
       FunctionName: deleteusersam
       Handler: main.lambda_handler
@@ -94,7 +94,7 @@ Resources:
     Type: AWS::Serverless::Function
   GetBucketsFunction:
     Properties:
-      CodeUri: s3://sam-templates-awsapi-3/7f0f365ced92bb7c63e08aa3d987a99a
+      CodeUri: s3://sam-templates-awsapi-3/dd49d4747bd0f9a1a033af28f08b969f
       Description: Get the buckets in your account
       FunctionName: getbucketssam
       Handler: main.lambda_handler
@@ -215,7 +215,7 @@ Resources:
     Type: AWS::Serverless::Function
   TerminateServerFunction:
     Properties:
-      CodeUri: s3://sam-templates-awsapi-3/576ff4731aeb9f56ce7f8bfd6723693f
+      CodeUri: s3://sam-templates-awsapi-3/1780e2eda3635f246bcb2f52c3daf2a1
       Description: Terminate server by providing instance_id
       FunctionName: terminateserverssam
       Handler: main.lambda_handler
