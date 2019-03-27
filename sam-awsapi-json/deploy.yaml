@@ -48,6 +48,17 @@ Resources:
       Role: arn:aws:iam::310094733482:role/lambda_basic_execution
       Runtime: python3.6
     Type: AWS::Serverless::Function
+  CreateStackFunction:
+    Properties:
+      CodeUri: s3://sam-templates-awsapi-3/060ceee6f3e9e1f4ec65e52bf434de3f
+      Description: Get stack in your account
+      FunctionName: createstacksam
+      Handler: main.lambda_handler
+      Layers:
+      - Ref: MyLambdaLayer
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
   CreateUserFunction:
     Properties:
       CodeUri: s3://sam-templates-awsapi-3/647b80ab0521358937c4f24969d5cc03
@@ -196,7 +207,7 @@ Resources:
       CompatibleRuntimes:
       - python3.6
       - python3.7
-      ContentUri: s3://sam-templates-awsapi-3/496627a3d9a1c39de1796a699affcb6f
+      ContentUri: s3://sam-templates-awsapi-3/e4d4ba05a04162541549acd1c388b173
       Description: My Lambda Layer with FireAuth Function
       LayerName: MyLambdaLayer
       LicenseInfo: MIT

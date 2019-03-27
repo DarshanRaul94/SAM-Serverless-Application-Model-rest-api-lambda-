@@ -235,7 +235,19 @@ Resources:
       Layers:
         - !Ref MyLambdaLayer   
  ###########################IAM SECTION END####################################
-
+############################CFN SECTION START###########################
+  CreateStackFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: createstacksam
+      Description: Get stack in your account
+      Role: arn:aws:iam::310094733482:role/lambda_basic_execution
+      CodeUri: CFN/Stacks/createstack/
+      Handler: main.lambda_handler
+      Runtime: python3.6
+      Layers:
+        - !Ref MyLambdaLayer
+ ###########################CFN SECTION END####################################
 
 
 
