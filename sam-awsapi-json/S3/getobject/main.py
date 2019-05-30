@@ -1,12 +1,15 @@
  
  
  
-
+### importing required packages
 import boto3
 import firebase_auth as fa
 import json
 
 def lambda_handler(event, context):
+ '''
+ This function is used to get the object data of the bucket name provided
+ '''
     
     profile_name=event['headers']['profile']
     
