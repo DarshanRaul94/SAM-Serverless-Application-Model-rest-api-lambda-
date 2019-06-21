@@ -20,7 +20,7 @@ def lambda_handler(event, context):
             
         name=role['RoleName']
         description=role['Description']
-        roleslist.append({"Name":name,"Description":description})
+        roleslist.append({"Name":name})
             
         
             
