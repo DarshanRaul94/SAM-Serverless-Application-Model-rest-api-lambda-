@@ -1,6 +1,6 @@
 # AWS SAM(Serverless Application Model) Python Lambda API application
 
-This is the code for the Serverless backend I have created for my project [AWS Konsole](https://github.com/darshan-raul/awsdashboard).
+This is the code for the Serverless backend I have created for my project on AWS lambda [AWS Konsole](https://github.com/darshan-raul/awsdashboard).
 
 ## Steps to deploy a SAM application
 
